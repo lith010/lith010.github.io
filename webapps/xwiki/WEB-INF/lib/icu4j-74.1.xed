@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<extension>
+    <id>com.ibm.icu:icu4j</id>
+    <version>74.1</version>
+    <type>jar</type>
+    <summary>International Components for Unicode for Java (ICU4J) is a mature, widely used Java library
+    providing Unicode and Globalization support</summary>
+    <website>https://icu.unicode.org/main/icu4j/</website>
+    <authors>
+        <author>
+            <name>Markus Scherer</name>
+        </author>
+        <author>
+            <name>Yoshito Umaoka</name>
+        </author>
+    </authors>
+    <licenses>
+        <license>
+            <name>Unicode/ICU License</name>
+        </license>
+    </licenses>
+    <scm>
+        <url>https://github.com/unicode-org/icu/main/icu4j</url>
+        <connection>
+            <system>git</system>
+            <path>git://github.com/unicode-org/icu.git/main/icu4j</path>
+        </connection>
+        <developerconnection>
+            <system>git</system>
+            <path>git@github.com:unicode-org/icu.git/main/icu4j</path>
+        </developerconnection>
+    </scm>
+    <issuemanagement>
+        <system>JIRA</system>
+        <url>https://unicode-org.atlassian.net/projects/ICU</url>
+    </issuemanagement>
+    <repositories>
+        <repository>
+            <id>xwiki-snapshots</id>
+            <type>maven</type>
+        </repository>
+        <repository>
+            <id>xwiki-public-proxy</id>
+            <type>maven</type>
+        </repository>
+        <repository>
+            <id>xwiki-public</id>
+            <type>maven</type>
+        </repository>
+    </repositories>
+    <properties>
+        <maven.groupid>com.ibm.icu</maven.groupid>
+        <maven.artifactid>icu4j</maven.artifactid>
+    </properties>
+</extension>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<extension>
+    <id>org.wildfly.common:wildfly-common</id>
+    <version>1.3.0.Final</version>
+    <type>jar</type>
+    <summary>Parent POM for JBoss projects. Provides default project build configuration.</summary>
+    <website>http://www.jboss.org/wildfly-common</website>
+    <authors>
+        <author>
+            <name>JBoss.org Community</name>
+        </author>
+    </authors>
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+        </license>
+    </licenses>
+    <scm>
+        <url>http://github.com/jboss/jboss-parent-pom/wildfly-common</url>
+        <connection>
+            <system>git</system>
+            <path>git@github.com:jboss/jboss-parent-pom.git/wildfly-common</path>
+        </connection>
+        <developerconnection>
+            <system>git</system>
+            <path>git@github.com:jboss/jboss-parent-pom.git/wildfly-common</path>
+        </developerconnection>
+    </scm>
+    <issuemanagement>
+        <system>JIRA</system>
+        <url>https://issues.jboss.org/</url>
+    </issuemanagement>
+    <repositories>
+        <repository>
+            <id>xwiki-snapshots</id>
+            <type>maven</type>
+        </repository>
+        <repository>
+            <id>xwiki-public-proxy</id>
+            <type>maven</type>
+        </repository>
+        <repository>
+            <id>xwiki-public</id>
+            <type>maven</type>
+        </repository>
+    </repositories>
+    <properties>
+        <maven.groupid>org.wildfly.common</maven.groupid>
+        <maven.artifactid>wildfly-common</maven.artifactid>
+    </properties>
+</extension>

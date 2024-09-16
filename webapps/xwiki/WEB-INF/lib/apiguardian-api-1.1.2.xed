@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<extension>
+    <id>org.apiguardian:apiguardian-api</id>
+    <version>1.1.2</version>
+    <type>jar</type>
+    <name>org.apiguardian:apiguardian-api</name>
+    <summary>@API Guardian</summary>
+    <website>https://github.com/apiguardian-team/apiguardian</website>
+    <authors>
+        <author>
+            <name>@API Guardian Team</name>
+        </author>
+    </authors>
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+        </license>
+    </licenses>
+    <scm>
+        <url>https://github.com/apiguardian-team/apiguardian</url>
+        <connection>
+            <system>git</system>
+            <path>git://github.com/apiguardian-team/apiguardian.git</path>
+        </connection>
+        <developerconnection>
+            <system>git</system>
+            <path>git://github.com/apiguardian-team/apiguardian.git</path>
+        </developerconnection>
+    </scm>
+    <repositories>
+        <repository>
+            <id>xwiki-snapshots</id>
+            <type>maven</type>
+        </repository>
+        <repository>
+            <id>xwiki-public-proxy</id>
+            <type>maven</type>
+        </repository>
+        <repository>
+            <id>xwiki-public</id>
+            <type>maven</type>
+        </repository>
+    </repositories>
+    <properties>
+        <maven.groupid>org.apiguardian</maven.groupid>
+        <maven.artifactid>apiguardian-api</maven.artifactid>
+    </properties>
+</extension>

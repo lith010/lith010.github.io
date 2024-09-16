@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<extension>
+    <id>org.codehaus.janino:janino</id>
+    <version>3.0.9</version>
+    <type>jar</type>
+    <name>janino</name>
+    <summary>The "JANINO" implementation of the "commons-compiler" API: Super-small, super-fast, independent from the JDK's "tools.jar".</summary>
+    <website>http://janino-compiler.github.io/janino/</website>
+    <authors>
+        <author>
+            <name>Arno Unkrig</name>
+        </author>
+        <author>
+            <name>Vy Nguyen</name>
+        </author>
+    </authors>
+    <licenses>
+        <license>
+            <name>Revised BSD License</name>
+        </license>
+    </licenses>
+    <scm>
+        <url>https://github.com/janino-compiler/janino</url>
+        <developerconnection>
+            <system>git</system>
+            <path>https://github.com/janino-compiler/janino</path>
+        </developerconnection>
+    </scm>
+    <dependencies>
+        <dependency>
+            <id>org.codehaus.janino:commons-compiler</id>
+            <version>3.0.9</version>
+            <optional type="boolean">false</optional>
+            <properties>
+                <maven.dependency.scope>compile</maven.dependency.scope>
+                <maven.dependency.type>jar</maven.dependency.type>
+            </properties>
+        </dependency>
+    </dependencies>
+    <manageddependencies>
+        <dependency>
+            <id>junit:junit</id>
+            <version>4.12</version>
+            <optional type="boolean">false</optional>
+            <properties>
+                <maven.dependency.type>jar</maven.dependency.type>
+            </properties>
+        </dependency>
+    </manageddependencies>
+    <repositories>
+        <repository>
+            <id>xwiki-snapshots</id>
+            <type>maven</type>
+        </repository>
+        <repository>
+            <id>xwiki-public-proxy</id>
+            <type>maven</type>
+        </repository>
+        <repository>
+            <id>xwiki-public</id>
+            <type>maven</type>
+        </repository>
+    </repositories>
+    <properties>
+        <maven.groupid>org.codehaus.janino</maven.groupid>
+        <maven.artifactid>janino</maven.artifactid>
+    </properties>
+</extension>

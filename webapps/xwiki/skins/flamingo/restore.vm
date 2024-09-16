@@ -1,0 +1,223 @@
+##!source.syntax=xwiki/2.1
+{{template name='refactoringStatus_macros.vm' output='false' /}}
+
+{{velocity}}
+## ---------------------------------------------------------------------------
+## See the NOTICE file distributed with this work for additional
+## information regarding copyright ownership.
+##
+## This is free software; you can redistribute it and/or modify it
+## under the terms of the GNU Lesser General Public License as
+## published by the Free Software Foundation; either version 2.1 of
+## the License, or (at your option) any later version.
+##
+## This software is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+## Lesser General Public License for more details.
+##
+## You should have received a copy of the GNU Lesser General Public
+## License along with this software; if not, write to the Free
+## Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+## 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+## ---------------------------------------------------------------------------
+#######################################################
+###              RESTORE (UNDELETE) PAGE ACTION
+###              ------------------
+###
+#######################################################
+##
+#######################################################
+##                     GLOBALS
+#######################################################
+#set($fullmsg = '')
+#set($quote = '"')
+#set($hasInlinks = false)
+#######################################################
+##                     DISPLAY
+#######################################################
+{{html clean="false"}}
+#if ($xcontext.action == 'get' && "$!request.jobId" != '')
+  #handleStatusRequest()
+#else
+  #template("startpage.vm")
+  <div class="main">
+    ## Set as an HTML main for better DOM tree semantics to facilitate navigation with assistive technologies.
+    <main id="mainContentArea">
+      #define($titleLink)<a href="$doc.getURL('view')">$!escapetool.xml($doc.plainTitle)</a>#end
+      #set($titleToDisplay = $services.localization.render('core.restore.title', [$titleLink]))
+      <div class="xcontent">
+        #template('contentheader.vm')
+        #controller()
+        <div class="clearfloats"></div>
+      </div> ## xcontent
+    </main>## mainContentArea
+  </div>## main
+  #template("endpage.vm")
+#end
+{{/html}}
+
+#######################################################
+##                    CONTROLLER
+#######################################################
+#macro(controller)
+  #if("$!{request.jobId}" != '')
+    ## A restore job is running
+    #displayProgressBar()
+  #elseif("$!{request.showBatch}" == 'true')
+    ## showBatch=true means that we are displaying the other documents that were deleted in the same batch as the
+    ## current one, which we might want to restore as well.
+    #displayConfirmationPage()
+  #end
+#end
+#######################################################
+##            DISPLAY CONFIRMATION PAGE
+#######################################################
+#macro(displayConfirmationPage)
+  <form action="$xwiki.relativeRequestURL" method="post">
+    #getBatch()
+    #displayConfirmMessage()
+  </form>
+#end
+#######################################################
+##              DISPLAY PROGRESS BAR
+#######################################################
+#macro(displayProgressBar)
+  #handleStatusRequest()
+#end
+#macro (handleStatusRequest)
+  #template('job_macros.vm')
+  #set ($jobStatus = $services.job.getJobStatus($stringtool.split($request.jobId, '/')))
+  #if ($jobStatus)
+    #if ($xcontext.action == 'get')
+      #outputJobStatusJSON($jobStatus)
+    #else
+      #displayJobStatus($jobStatus)
+    #end
+  #else
+    $response.setStatus(404)
+    <div class="box errormessage">
+      $services.localization.render('core.restore.status.notFound')
+    </div>
+  #end
+#end
+#macro (outputJobStatusJSON $jobStatus)
+  #getJobStatusJSON($jobStatus $json)
+  #set ($json.message = "#displayJobFinishedMessage($jobStatus)")
+  #jsonResponse($json)
+#end
+#macro (displayJobFinishedMessage $jobStatus)
+  #displayRefactoringJobFinishedMessage($jobStatus 'core.restore.status.success' 'core.restore.status.failure')
+#end
+#######################################################
+##                  DISPLAY PANEL
+#######################################################
+#macro(displayPanel $panelId $panelClass $heading $body)
+  <div class="panel $!panelClass">
+    <div class="panel-heading">
+      $heading
+      <div class="pull-right"><a class="panel-collapse-carret" role="button" data-toggle="collapse" href="#$panelId" aria-expanded="false" aria-controls="$panelId">
+        <span class="caret"></span>
+        <span class='sr-only'>$escapetool.xml($services.localization.render('core.delete.affectChildren.dropDown.label'))</span>
+      </a></div>
+    </div>
+    <div class="panel-body collapse" id="$panelId">
+      $body
+    </div>
+  </div>
+#end
+#######################################################
+##                    BATCH
+#######################################################
+#macro(getBatch)
+  #set ($deletedDocument = $xwiki.getDeletedDocument($request.get('id')))
+  #set ($batchDeletedDocuments = $xwiki.getDeletedDocuments($deletedDocument.batchId))
+  ## Only propose to restore the batch if it also contains other documents than the current one.
+  #if ($batchDeletedDocuments.size() > 1)
+    #define($heading)
+      <input name="includeBatch" id="includeBatch" type="checkbox" value="true"/><label for="includeBatch">$escapetool.xml($services.localization.render('core.restore.includeBatch')) ($batchDeletedDocuments.size())</label>
+    #end
+    #define($body)
+      ##
+      ## Batch details.
+      ##
+      <div class="row">
+        <div class="col-xs-12 col-lg-4">
+          <div><b>$services.localization.render('core.restore.deleter')</b></div> $xwiki.getUserName($deletedDocument.deleter)
+        </div>
+        <div class="col-xs-12 col-lg-4">
+          <div><b>$services.localization.render('core.restore.deleteDate')</b></div> $xwiki.formatDate($deletedDocument.date)
+        </div>
+        <div class="col-xs-12 col-lg-4">
+          <div><b>$services.localization.render('core.restore.batchId')</b></div> $deletedDocument.batchId
+        </div>
+      </div>
+      ##
+      ## List the deleted documents in the batch using a live data.
+      ##
+      #set ($sourceParameters = $escapetool.url({
+        'template': 'getdeleteddocuments.vm',
+        'doc.batchId': $deletedDocument.batchId,
+        'translationPrefix' : 'core.restore.batch.'
+      }))
+      #set ($liveDataConfig = {
+        'meta': {
+          'propertyDescriptors': [
+            {
+              'id': '_actions',
+              'displayer': {
+                'id': 'actions',
+                'actions': ['restore', 'delete']
+              }
+            },
+            {
+              'id': 'doc.name',
+              'filterable': false,
+              'sortable': false
+            }
+          ],
+          'actions': [
+            {
+              'id': 'restore',
+              'icon': 'refresh',
+              'allowProperty': 'doc.hasrestore',
+              'urlProperty': 'doc.restore_url'
+            }
+          ]
+        }
+      })
+      {{/html}}
+
+      {{liveData
+        id='deletedBatch'
+        source='liveTable'
+        sourceParameters="$sourceParameters"
+        properties='doc.name,doc.location,_actions'
+        sort='doc.location'}}$jsontool.serialize($liveDataConfig){{/liveData}}
+
+      {{html clean="false"}}
+    #end
+    #displayPanel('panel-batch', 'panel-default', $heading, $body)
+  #end
+#end
+#######################################################
+##              DISPLAY CONFIRM MESSAGE
+#######################################################
+#macro(displayConfirmMessage)
+  <div class="hidden">
+    <input type="hidden" name="form_token" value="$!{services.csrf.getToken()}" />
+    <input type="hidden" name="confirm" value="true"/>
+    <input type="hidden" name="async" value="true"/>
+    #if("$!{request.xredirect}" != '')
+      <input type="hidden" name="xredirect" value="$!{escapetool.xml($request.xredirect)}"/>
+    #end
+  </div>
+  <button class="btn btn-primary">$services.localization.render('core.restore.confirm.yes')</button>
+  #if("$!{request.xredirect}" != '')
+    #getSanitizedURLAttributeValue('a','href',$request.xredirect,$doc.getURL(),$cancelUrl)
+  #else
+    #set($cancelUrl = $escapetool.xml($doc.getURL()))
+  #end
+  <a class="btn btn-default" href="$cancelUrl">$services.localization.render('core.restore.confirm.no')</a>
+#end
+{{/velocity}}

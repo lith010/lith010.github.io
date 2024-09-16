@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<extension>
+    <id>org.apache.htrace:htrace-core4</id>
+    <version>4.1.0-incubating</version>
+    <type>jar</type>
+    <name>htrace-core4</name>
+    <summary>A distributed tracing framework.</summary>
+    <website>http://incubator.apache.org/projects/htrace.html</website>
+    <authors>
+        <author>
+            <name>Jonathan Leavitt</name>
+        </author>
+        <author>
+            <name>Elliott Clark</name>
+        </author>
+    </authors>
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+        </license>
+    </licenses>
+    <scm>
+        <url>https://git-wip-us.apache.org/repos/asf?p=incubator-htrace.git/htrace-core4</url>
+        <connection>
+            <system>git</system>
+            <path>http://git-wip-us.apache.org/repos/asf/incubator-htrace.git/htrace-core4</path>
+        </connection>
+        <developerconnection>
+            <system>git</system>
+            <path>https://git-wip-us.apache.org/repos/asf/incubator-htrace.git/htrace-core4</path>
+        </developerconnection>
+    </scm>
+    <issuemanagement>
+        <system>JIRA</system>
+        <url>http://issues.apache.org/jira/browse/HTRACE</url>
+    </issuemanagement>
+    <manageddependencies>
+        <dependency>
+            <id>commons-logging:commons-logging</id>
+            <version>1.1.1</version>
+            <optional type="boolean">false</optional>
+            <properties>
+                <maven.dependency.type>jar</maven.dependency.type>
+            </properties>
+        </dependency>
+        <dependency>
+            <id>junit:junit</id>
+            <version>4.11</version>
+            <optional type="boolean">false</optional>
+            <properties>
+                <maven.dependency.scope>test</maven.dependency.scope>
+                <maven.dependency.type>jar</maven.dependency.type>
+            </properties>
+        </dependency>
+        <dependency>
+            <id>com.fasterxml.jackson.core:jackson-core</id>
+            <version>2.4.0</version>
+            <optional type="boolean">false</optional>
+            <properties>
+                <maven.dependency.type>jar</maven.dependency.type>
+            </properties>
+        </dependency>
+        <dependency>
+            <id>com.fasterxml.jackson.core:jackson-databind</id>
+            <version>2.4.0</version>
+            <optional type="boolean">false</optional>
+            <properties>
+                <maven.dependency.type>jar</maven.dependency.type>
+            </properties>
+        </dependency>
+    </manageddependencies>
+    <repositories>
+        <repository>
+            <id>xwiki-snapshots</id>
+            <type>maven</type>
+        </repository>
+        <repository>
+            <id>xwiki-public-proxy</id>
+            <type>maven</type>
+        </repository>
+        <repository>
+            <id>xwiki-public</id>
+            <type>maven</type>
+        </repository>
+        <repository>
+            <id>apache.snapshots</id>
+            <type>maven</type>
+        </repository>
+    </repositories>
+    <properties>
+        <maven.groupid>org.apache.htrace</maven.groupid>
+        <maven.artifactid>htrace-core4</maven.artifactid>
+    </properties>
+</extension>

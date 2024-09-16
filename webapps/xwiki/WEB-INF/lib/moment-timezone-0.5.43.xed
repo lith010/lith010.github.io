@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<extension>
+    <id>org.webjars.npm:moment-timezone</id>
+    <version>0.5.43</version>
+    <type>jar</type>
+    <name>moment-timezone</name>
+    <summary>WebJar for moment-timezone</summary>
+    <website>https://www.webjars.org</website>
+    <authors>
+        <author>
+            <name>webjars</name>
+            <url>https://www.webjars.org</url>
+        </author>
+    </authors>
+    <licenses>
+        <license>
+            <name>The MIT License</name>
+        </license>
+    </licenses>
+    <scm>
+        <url>https://github.com/moment/moment-timezone</url>
+        <connection>
+            <system>https</system>
+            <path>//github.com/moment/moment-timezone.git</path>
+        </connection>
+        <developerconnection>
+            <system>https</system>
+            <path>//github.com/moment/moment-timezone.git</path>
+        </developerconnection>
+    </scm>
+    <issuemanagement>
+        <url>https://github.com/moment/moment-timezone/issues</url>
+    </issuemanagement>
+    <dependencies>
+        <dependency>
+            <id>org.webjars.npm:moment</id>
+            <version>[2.29.4,3)</version>
+            <optional type="boolean">false</optional>
+            <properties>
+                <maven.dependency.scope>compile</maven.dependency.scope>
+                <maven.dependency.type>jar</maven.dependency.type>
+            </properties>
+        </dependency>
+    </dependencies>
+    <repositories>
+        <repository>
+            <id>xwiki-snapshots</id>
+            <type>maven</type>
+        </repository>
+        <repository>
+            <id>xwiki-public-proxy</id>
+            <type>maven</type>
+        </repository>
+        <repository>
+            <id>xwiki-public</id>
+            <type>maven</type>
+        </repository>
+    </repositories>
+    <properties>
+        <maven.groupid>org.webjars.npm</maven.groupid>
+        <maven.artifactid>moment-timezone</maven.artifactid>
+    </properties>
+</extension>

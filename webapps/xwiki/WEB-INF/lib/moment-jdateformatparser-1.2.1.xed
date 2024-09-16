@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<extension>
+    <id>org.webjars:moment-jdateformatparser</id>
+    <version>1.2.1</version>
+    <type>jar</type>
+    <name>Moment Java DateFormat Parser</name>
+    <summary>WebJar for Moment Java DateFormat Parser</summary>
+    <website>http://webjars.org</website>
+    <authors>
+        <author>
+            <name>Marius Florea</name>
+        </author>
+    </authors>
+    <licenses>
+        <license>
+            <name>The MIT License</name>
+        </license>
+    </licenses>
+    <scm>
+        <url>http://github.com/webjars/moment-jdateformatparser</url>
+        <connection>
+            <system>git</system>
+            <path>https://github.com/webjars/moment-jdateformatparser.git</path>
+        </connection>
+        <developerconnection>
+            <system>git</system>
+            <path>https://github.com/webjars/moment-jdateformatparser.git</path>
+        </developerconnection>
+    </scm>
+    <dependencies>
+        <dependency>
+            <id>org.webjars:momentjs</id>
+            <version>2.9.0</version>
+            <optional type="boolean">false</optional>
+            <properties>
+                <maven.dependency.scope>compile</maven.dependency.scope>
+                <maven.dependency.type>jar</maven.dependency.type>
+            </properties>
+        </dependency>
+    </dependencies>
+    <repositories>
+        <repository>
+            <id>xwiki-snapshots</id>
+            <type>maven</type>
+        </repository>
+        <repository>
+            <id>xwiki-public-proxy</id>
+            <type>maven</type>
+        </repository>
+        <repository>
+            <id>xwiki-public</id>
+            <type>maven</type>
+        </repository>
+        <repository>
+            <id>sonatype-nexus-snapshots</id>
+            <type>maven</type>
+        </repository>
+    </repositories>
+    <properties>
+        <maven.groupid>org.webjars</maven.groupid>
+        <maven.artifactid>moment-jdateformatparser</maven.artifactid>
+    </properties>
+</extension>

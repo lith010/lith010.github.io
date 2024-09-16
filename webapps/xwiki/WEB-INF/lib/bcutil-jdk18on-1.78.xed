@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<extension>
+    <id>org.bouncycastle:bcutil-jdk18on</id>
+    <version>1.78</version>
+    <type>jar</type>
+    <name>Bouncy Castle ASN.1 Extension and Utility APIs</name>
+    <summary>The Bouncy Castle Java APIs for ASN.1 extension and utility APIs used to support bcpkix and bctls. This jar contains APIs for JDK 1.8 and up.</summary>
+    <website>https://www.bouncycastle.org/java.html</website>
+    <authors>
+        <author>
+            <name>The Legion of the Bouncy Castle Inc.</name>
+        </author>
+    </authors>
+    <licenses>
+        <license>
+            <name>Bouncy Castle Licence</name>
+        </license>
+    </licenses>
+    <scm>
+        <url>https://github.com/bcgit/bc-java</url>
+    </scm>
+    <issuemanagement>
+        <system>GitHub</system>
+        <url>https://github.com/bcgit/bc-java/issues</url>
+    </issuemanagement>
+    <dependencies>
+        <dependency>
+            <id>org.bouncycastle:bcprov-jdk18on</id>
+            <version>1.78</version>
+            <optional type="boolean">false</optional>
+            <properties>
+                <maven.dependency.scope>compile</maven.dependency.scope>
+                <maven.dependency.type>jar</maven.dependency.type>
+            </properties>
+        </dependency>
+    </dependencies>
+    <repositories>
+        <repository>
+            <id>xwiki-snapshots</id>
+            <type>maven</type>
+        </repository>
+        <repository>
+            <id>xwiki-public-proxy</id>
+            <type>maven</type>
+        </repository>
+        <repository>
+            <id>xwiki-public</id>
+            <type>maven</type>
+        </repository>
+    </repositories>
+    <properties>
+        <maven.groupid>org.bouncycastle</maven.groupid>
+        <maven.artifactid>bcutil-jdk18on</maven.artifactid>
+    </properties>
+</extension>

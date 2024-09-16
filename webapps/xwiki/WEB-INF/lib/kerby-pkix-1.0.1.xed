@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<extension>
+    <id>org.apache.kerby:kerby-pkix</id>
+    <version>1.0.1</version>
+    <type>jar</type>
+    <name>Kerby PKIX Project</name>
+    <summary>Kerby PKIX Project</summary>
+    <website>http://directory.apache.org/kerby/kerby-pkix</website>
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+        </license>
+    </licenses>
+    <scm>
+        <url>https://github.com/apache/directory-kerby/kerby-pkix</url>
+        <connection>
+            <system>git</system>
+            <path>https://git-wip-us.apache.org/repos/asf/directory-kerby.git/kerby-pkix</path>
+        </connection>
+        <developerconnection>
+            <system>git</system>
+            <path>https://git-wip-us.apache.org/repos/asf/directory-kerby.git/kerby-pkix</path>
+        </developerconnection>
+    </scm>
+    <dependencies>
+        <dependency>
+            <id>org.apache.kerby:kerby-asn1</id>
+            <version>1.0.1</version>
+            <optional type="boolean">false</optional>
+            <properties>
+                <maven.dependency.scope>compile</maven.dependency.scope>
+                <maven.dependency.type>jar</maven.dependency.type>
+            </properties>
+        </dependency>
+        <dependency>
+            <id>org.apache.kerby:kerby-util</id>
+            <version>1.0.1</version>
+            <optional type="boolean">false</optional>
+            <properties>
+                <maven.dependency.scope>compile</maven.dependency.scope>
+                <maven.dependency.type>jar</maven.dependency.type>
+            </properties>
+        </dependency>
+        <dependency>
+            <id>org.slf4j:slf4j-api</id>
+            <version>1.7.25</version>
+            <optional type="boolean">false</optional>
+            <properties>
+                <maven.dependency.scope>compile</maven.dependency.scope>
+                <maven.dependency.type>jar</maven.dependency.type>
+            </properties>
+        </dependency>
+    </dependencies>
+    <manageddependencies>
+        <dependency>
+            <id>org.slf4j:slf4j-api</id>
+            <version>1.7.25</version>
+            <optional type="boolean">false</optional>
+            <properties>
+                <maven.dependency.type>jar</maven.dependency.type>
+            </properties>
+        </dependency>
+    </manageddependencies>
+    <repositories>
+        <repository>
+            <id>xwiki-snapshots</id>
+            <type>maven</type>
+        </repository>
+        <repository>
+            <id>xwiki-public-proxy</id>
+            <type>maven</type>
+        </repository>
+        <repository>
+            <id>xwiki-public</id>
+            <type>maven</type>
+        </repository>
+        <repository>
+            <id>apache.snapshots</id>
+            <type>maven</type>
+        </repository>
+    </repositories>
+    <properties>
+        <maven.groupid>org.apache.kerby</maven.groupid>
+        <maven.artifactid>kerby-pkix</maven.artifactid>
+    </properties>
+</extension>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<extension>
+    <id>io.sf.carte:tokenproducer</id>
+    <version>3.0</version>
+    <type>jar</type>
+    <summary>Low-level parsing library</summary>
+    <website>https://github.com/css4j/tokenproducer</website>
+    <licenses>
+        <license>
+            <name>BSD 3-clause license</name>
+        </license>
+    </licenses>
+    <repositories>
+        <repository>
+            <id>xwiki-snapshots</id>
+            <type>maven</type>
+        </repository>
+        <repository>
+            <id>xwiki-public-proxy</id>
+            <type>maven</type>
+        </repository>
+        <repository>
+            <id>xwiki-public</id>
+            <type>maven</type>
+        </repository>
+    </repositories>
+    <properties>
+        <maven.groupid>io.sf.carte</maven.groupid>
+        <maven.artifactid>tokenproducer</maven.artifactid>
+    </properties>
+</extension>
